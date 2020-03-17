@@ -1,42 +1,97 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta http-equiv="content-Type" content="text/html; charset=utf-8" />
   <meta name="apple-mobile-web-app-capable" content="no" /> <!-- Otherwise no multitasking -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-  <link href="icon.png" rel="apple-touch-icon-precomposed" /> <!-- 114px -->
-  <meta name="description" content="Play web radios in Safari on your iPhone or iPod touch using HTML5" />
-  <meta name="keywords" content="iPhone,iPod,iOS,radio,Safari,webapp,html5" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" type="image/png" href="icons/icon-32.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="icons/icon-120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="icons/icon-144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152.png" />
+  <link rel="apple-touch-icon" sizes="167x167" href="icons/icon-167.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png" />
+  <meta name="description" content="Stream radios in your web browser" />
   <title>That Radio</title>
-  <link rel="stylesheet" type="text/css" href="style.css" />
-  <script type="text/javascript" src="player.js"></script> <!-- HTML5 audio player for radio playing -->
+
+  <style>
+    body {
+      background-color: black;
+      font: 17pt/2em system-ui;
+    }
+
+    h1 {
+      margin-left: 17pt;
+      font: bold 34pt;
+      color: white;
+    }
+
+    .line {
+      margin-top: 78pt;
+      margin-bottom: 20pt;
+      border: 1px dashed #d00;
+      width: 100%;
+    }
+
+    a {
+      margin-left: 57pt;
+      text-decoration: none;
+      color: #ddd;
+    }
+
+    #stop {
+      font-size: 20pt;
+      color: #ccc;
+      position: absolute;
+      top: 80pt;
+      left: 155pt;
+    }
+
+    #radio {
+      font-size: 20pt;
+      color: #d00;
+      position: absolute;
+      top: 80pt;
+      left: 40pt;
+    }
+  </style>
+
+  <script type="text/javascript">
+    var audio = new Audio(); // Create an <audio> tag
+
+    function player(radio, id){
+      audio.setAttribute('src', radio); // Load the stream
+      audio.play();
+  
+      if (id > 0) {
+        station = document.getElementById(id).innerHTML; // Get current radio name
+        document.getElementById('radio').innerHTML = station; // Show current radio
+        document.getElementById('stop').innerHTML = "■"; // Show stop button
+      } else {
+        document.getElementById('radio').innerHTML = ""; // Hide radio name
+        document.getElementById('stop').innerHTML = ""; // Hide stop button
+      }
+    }
+  </script>
 </head>
+<body>
 
-<body onload="init(); setTimeout(function(){ window.scrollTo(0, 1) }, 100);">
+  <h1>Radio</h1>
 
-<h1>That Radio Player</h1>
+  <!-- Player controls -->
+  <a href="#" id="stop" onclick="player('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAVFYAAFRWAAABAAgAZGF0YQAAAAA=',0);"></a>
+  <b id="radio"></b>
 
-<!-- Player controls -->
-<a href="#" id="stop">[Stopped]</a>
-<a href="#" id="playtoggle"></a>
-<b id="radio"></b>
+  <div class="line"></div>
 
-<!-- Radio data -->
-<ul>
-  <li><a href="#" id="1" onclick="player('http://music.newnormalmusic.com/listen.pls',1);">New Normal Music</a></li>
-  <li><a href="#" id="2" onclick="player('http://www.gimmeindie.se/stream',2);">Gimme Indie</a></li>
-  <li><a href="#" id="3" onclick="player('http://xpn2hi.streamguys.net/listen.pls',3);">XPN2</a></li>
-  <li><a href="#" id="4" onclick="player('http://minnesota.publicradio.org/tools/play/streams/the_current.pls',4);">The Current</a></li>
-  <li><a href="#" id="5" onclick="player('http://somafm.com/groovesalad130.pls',5);">Groove Salad</a></li>
-  <li><a href="#" id="6" onclick="player('http://5by5.fm',6);">5by5</a></li>
-  <li><a href="#" id="7" onclick="player('http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u',7);">France Inter</a></li>
-  <li><a href="#" id="8" onclick="player('http://www.tv-radio.com/station/france_culture_mp3/france_culture_mp3-128k.m3u',8);">France Culture</a></li>
-  <li><a href="#" id="9" onclick="player('http://www.tv-radio.com/station/france_info/france_info.m3u',9);">France Info</a></li>
-  <li><a href="#" id="10" onclick="player('http://www.tv-radio.com/station/le_mouv_mp3/le_mouv_mp3-128k.m3u',10);">Le Mouv'</a></li>
-  <li><a href="#" id="11" onclick="player('http://www.tv-radio.com/station/france_musique_mp3/france_musique_mp3-128k.m3u',11);">France Musique</a></li>
-</ul>
+  <!-- Radio data -->
+  <a href="#" onclick="player('https://stream.radiofrance.fr/fip/fip_hifi.m3u8',1);" id="1">FIP</a><br />
+  <a href="#" onclick="player('https://stream.radiofrance.fr/fipnouveautes/fipnouveautes_hifi.m3u8',2);" id="2">FIP Nouveautés</a><br />
+  <a href="#" onclick="player('https://stream.radiofrance.fr/fipelectro/fipelectro_hifi.m3u8',3);" id="3">FIP Électro</a><br />
+  <a href="#" onclick="player('https://stream2.friskyradio.com/frisky_aac_hi',4);" id="4">Frisky</a><br />
+  <a href="#" onclick="player('https://deep.friskyradio.com/friskydeep_aachi',5);" id="5">Frisky Deep</a><br />
+  <a href="#" onclick="player('https://stream.radiofrance.fr/franceinfo/franceinfo_hifi.m3u8',6);" id="6">France Info</a><br />
+  <a href="#" onclick="player('https://stream.radiofrance.fr/franceculture/franceculture_hifi.m3u8',7);" id="7">France Culture</a><br />
+  <a href="#" onclick="player('https://stream.radiofrance.fr/franceinter/franceinter_hifi.m3u8',8);" id="8">France Inter</a><br />
 
 </body>
-
 </html>
