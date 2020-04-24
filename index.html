@@ -21,21 +21,23 @@
     }
 
     h1 {
-      margin-left: 17pt;
+      margin-left: 22px;
       font: bold 34pt;
       color: white;
     }
 
     .line {
-      margin-top: 78pt;
-      margin-bottom: 20pt;
+      position: absolute;
+      top: 180px;
+      left:-2px;
       border: 1px dashed #d00;
       width: 100%;
     }
 
     .list {
       position: absolute;
-      left: 40pt;
+      top: 206px;
+      left: 54px;
     }
 
     a {
@@ -47,16 +49,16 @@
       font-size: 20pt;
       color: #ccc;
       position: absolute;
-      top: 80pt;
-      left: 210pt;
+      top: 102px;
+      left: 280px;
     }
 
     #radio {
       font-size: 20pt;
       color: #d00;
       position: absolute;
-      top: 80pt;
-      left: 40pt;
+      top: 102px;
+      left: 54px;
     }
   </style>
 
@@ -85,7 +87,6 @@
   <!-- Player controls -->
   <a href="#" id="stop" onclick="player('data:audio/wav;base64,0',0);"></a>
   <b id="radio"></b>
-
   <div class="line"></div>
 
   <!-- Radio data -->
