@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta http-equiv="content-Type" content="text/html; charset=utf-8" />
   <meta name="apple-mobile-web-app-capable" content="no" /> <!-- Otherwise no multitasking -->
@@ -17,6 +17,7 @@
     body {
       background-color: black;
       font: 17pt/2em system-ui;
+      color: #ddd;
     }
 
     h1 {
@@ -32,8 +33,12 @@
       width: 100%;
     }
 
+    .list {
+      position: absolute;
+      left: 40pt;
+    }
+
     a {
-      margin-left: 57pt;
       text-decoration: none;
       color: #ddd;
     }
@@ -43,7 +48,7 @@
       color: #ccc;
       position: absolute;
       top: 80pt;
-      left: 155pt;
+      left: 210pt;
     }
 
     #radio {
@@ -55,7 +60,7 @@
     }
   </style>
 
-  <script type="text/javascript">
+  <script>
     var audio = new Audio(); // Create an <audio> tag
 
     function player(radio, id){
@@ -78,21 +83,23 @@
   <h1>Radio</h1>
 
   <!-- Player controls -->
-  <a href="#" id="stop" onclick="player('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAVFYAAFRWAAABAAgAZGF0YQAAAAA=',0);"></a>
+  <a href="#" id="stop" onclick="player('data:audio/wav;base64,0',0);"></a>
   <b id="radio"></b>
 
   <div class="line"></div>
 
   <!-- Radio data -->
-  <a href="#" onclick="player('https://stream.radiofrance.fr/fip/fip_hifi.m3u8',1);" id="1">FIP</a><br />
-  <a href="#" onclick="player('https://stream.radiofrance.fr/fipnouveautes/fipnouveautes_hifi.m3u8',2);" id="2">FIP Nouveautés</a><br />
-  <a href="#" onclick="player('https://stream.radiofrance.fr/fipelectro/fipelectro_hifi.m3u8',3);" id="3">FIP Électro</a><br />
-  <a href="#" onclick="player('https://stream2.friskyradio.com/frisky_aac_hi',4);" id="4">Frisky</a><br />
-  <a href="#" onclick="player('https://deep.friskyradio.com/friskydeep_aachi',5);" id="5">Frisky Deep</a><br />
-  <a href="#" onclick="player('https://stream.radiofrance.fr/franceinfo/franceinfo_hifi.m3u8',6);" id="6">France Info</a><br />
-  <a href="#" onclick="player('https://stream.radiofrance.fr/franceculture/franceculture_hifi.m3u8',7);" id="7">France Culture</a><br />
-  <a href="#" onclick="player('https://stream.radiofrance.fr/franceinter/franceinter_hifi.m3u8',8);" id="8">France Inter</a><br />
-  <a href="#" onclick="player('https://radioclassique.ice.infomaniak.ch/radioclassique-high.mp3',9);" id="9">Radio Classique</a><br />
-
+  <div class="list">
+	  <a href="#" onclick="player('https://stream.radiofrance.fr/fip/fip_hifi.m3u8',1);" id="1">FIP</a><br />
+	  <a href="#" onclick="player('https://stream.radiofrance.fr/fipnouveautes/fipnouveautes_hifi.m3u8',2);" id="2">FIP Nouveautés</a><br />
+	  <a href="#" onclick="player('https://stream.radiofrance.fr/fipelectro/fipelectro_hifi.m3u8',3);" id="3">FIP Électro</a><br />
+	  <a href="#" onclick="player('http://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3',4);" id="4">Radio Meuh</a><br />
+	  <a href="#" onclick="player('https://stream2.friskyradio.com/frisky_aac_hi',5);" id="5">Frisky</a> |
+	  <a href="#" onclick="player('https://deep.friskyradio.com/friskydeep_aachi',6);" id="6">Frisky Deep</a><br />
+	  <a href="#" onclick="player('https://stream.radiofrance.fr/franceinfo/franceinfo_hifi.m3u8',7);" id="7">France Info</a><br />
+	  <a href="#" onclick="player('https://stream.radiofrance.fr/franceculture/franceculture_hifi.m3u8',8);" id="8">France Culture</a><br />
+	  <a href="#" onclick="player('https://stream.radiofrance.fr/franceinter/franceinter_hifi.m3u8',9);" id="9">France Inter</a><br />
+	  <a href="#" onclick="player('https://radioclassique.ice.infomaniak.ch/radioclassique-high.mp3',10);" id="10">Radio Classique</a><br />
+  </div>
 </body>
 </html>
